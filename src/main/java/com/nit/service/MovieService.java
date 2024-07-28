@@ -25,12 +25,9 @@ public class MovieService implements IMovieService {
 	// 1.Save Operation
 	@Override
 	public String movieInsert(Movie m) {
-System.out.println("DAta from service "+m);
 		if (m.getMid() == null) {
-			System.out.println("throws the exception");
 			throw new MovieNotFoundException("Movie Not Found");
 		}
-		System.out.println("From main service method" + repo);
 
 		log.info("***********Save Operation is started from com.nit.service.MovieService class**************");
 		log.info("******Record is Saved From MovieService com.nit.service.MovieService ******************");
@@ -47,7 +44,6 @@ System.out.println("DAta from service "+m);
 		log.info("***********Retrieve Operation is Started From com.nit.service.MovieService **************");
 		log.info("***********Retrieve Operation is ended From com.nit.service.MovieService **************");
 
-		// TODO Auto-generated method stub
 		return repo.findAll();
 	}
 
@@ -83,7 +79,7 @@ System.out.println("DAta from service "+m);
 		java.util.Optional<Movie> findById = repo.findById(id);
 
 		if (findById.isPresent()) {
-			Movie save = repo.save(findById.get());
+			repo.save(findById.get());
 			log.info("***********update Operation is ended From com.nit.service.MovieService**************");
 
 			return "Record Updated";

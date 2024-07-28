@@ -19,7 +19,7 @@ public class Movie {
 	private Integer mid;
 	private String actor;
 	private String name;
-	private String music_director;
+	private String musicDirector;
 	private String director;
 
 }

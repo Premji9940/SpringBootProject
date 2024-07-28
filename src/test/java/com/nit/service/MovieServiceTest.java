@@ -23,14 +23,14 @@ import com.nit.entity.Movie;
 import com.nit.exception.MovieNotFoundException;
 import com.nit.repo.IMovieRepo;
 
-public class MovieServiceTest {
+ class MovieServiceTest {
 
 	
 	public MovieService service;
 	public IMovieRepo repo;
 	
 
-	public MovieServiceTest() {
+	 MovieServiceTest() {
 		MockitoAnnotations.openMocks(this);
 
 	}
@@ -51,7 +51,7 @@ public class MovieServiceTest {
 		Movie movie = new Movie();
 		movie.setMid(10001);
 		movie.setActor("prem");
-		movie.setMusic_director("Dsp");
+		movie.setMusicDirector("Dsp");
 		movie.setName("RRR");
 		movie.setDirector("RajaMouli");
 		when(repo.save(movie)).thenReturn(movie);
@@ -67,7 +67,7 @@ public class MovieServiceTest {
 		Movie movie = new Movie();
 		movie.setMid(10001);
 		movie.setActor("prem");
-		movie.setMusic_director("Dsp");
+		movie.setMusicDirector("Dsp");
 		movie.setName("RRR");
 		movie.setDirector("RajaMouli");
 		when(repo.save(movie)).thenReturn(movie);
@@ -101,7 +101,7 @@ public class MovieServiceTest {
 
 	@Test
 	@DisplayName("Retrieve Test For Negative")
-	public void retrieveTestForNegative() {
+	 void retrieveTestForNegative() {
 		Movie a = new Movie(1001, "prabhas", "kalki", "santhosh narayana", "nag ashwin");
 		Movie b = new Movie(1002, "ram charan", "game changer", "thaman", "shankar");
 		Movie c = new Movie(1003, "Allu Arjun", "pushpa", "Devi sri prasad", "sukumar");
@@ -121,12 +121,13 @@ public class MovieServiceTest {
 		List<Movie> list = List.of();
 		when(repo.findAll()).thenReturn((Iterable<Movie>) list);
 		assertThat(((List<Movie>) service.getMovie()).size()).isEqualTo(0);
+		
 	}
 	// 3.Test Cases for Delete
 
 	@Test
 	@DisplayName("test Case for delete with Positve")
-	public void deleteTestPositive() {
+	 void deleteTestPositive() {
 		when(repo.existsById(1001)).thenReturn(true);
 		doNothing().when(repo).deleteById(1001);
 		
@@ -147,7 +148,7 @@ public class MovieServiceTest {
 
 	@Test
 	@DisplayName("test Case for delete with Null input")
-	public void deleteTestNullInput() {
+	 void deleteTestNullInput() {
 		assertEquals(service.deleteMovie(null), "input should not be null/empty");
 	}
 
@@ -165,7 +166,7 @@ public class MovieServiceTest {
 	}
 
 	@Test @DisplayName("test case for update with Negative")
-	public void updateTestNegative() {
+	 void updateTestNegative() {
 	
 		 when(repo.findById(1001)).thenReturn(Optional.empty());
 		 
@@ -175,7 +176,7 @@ public class MovieServiceTest {
 
 	@Test
 	@DisplayName("test Case for update with Null input")
-	public void updateTestNullInput() {
+	 void updateTestNullInput() {
 		assertEquals(service.updateMovie(null), "invalid input");
 	}
 }

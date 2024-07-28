@@ -32,13 +32,12 @@ public class MovieController {
 	// 1.save Operation
 	@PostMapping("/save")
 	public ResponseEntity<String> movieInsert(@RequestBody Movie m) {
-		System.out.println("data:  "+m);
 		log.info("com.nit.ctrl.MovieController----Save Operaion is started....");
 		log.info("com.nit.ctrl.MovieController contacting service method of MovieInsert()");
 		String msg = service.movieInsert(m);
 		log.info("com.nit.ctrl.MovieController----Save Operaion is ended....");
 
-		return new ResponseEntity<String>(msg, HttpStatus.CREATED);
+		return new ResponseEntity<>(msg, HttpStatus.CREATED);
 	}
 
 	// 2.Retrieve Operation
@@ -50,7 +49,7 @@ public class MovieController {
 		Iterable<Movie> movie = service.getMovie();
 		log.info("com.nit.ctrl.MovieController----Retrieve Operaion is ended....");
 
-		return new ResponseEntity<Iterable<Movie>>(movie, HttpStatus.OK);
+		return new ResponseEntity<>(movie, HttpStatus.OK);
 
 	}
 
@@ -62,7 +61,7 @@ public class MovieController {
 		String msg = service.deleteMovie(id);
 		log.info("com.nit.ctrl.MovieController----delete Operaion is ended....");
 
-		return new ResponseEntity<String>(msg, HttpStatus.OK);
+		return new ResponseEntity<>(msg, HttpStatus.OK);
 	}
 
 	// 4.Update Operation
@@ -74,7 +73,7 @@ public class MovieController {
 		String msg = service.updateMovie(id);
 		log.info("com.nit.ctrl.MovieController----update Operaion is ended....");
 
-		return new ResponseEntity<String>(msg, HttpStatus.OK);
+		return new ResponseEntity<>(msg, HttpStatus.OK);
 
 	}
 }
